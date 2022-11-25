@@ -17,7 +17,14 @@ window.addEventListener('load', async () => {
         //Extract the data out of the form
         await signUp(user)
     });
+    //Get the login button and add onclick listener
+    const loginBtn = document.getElementById('login')
+    loginBtn.addEventListener('click', () => {
+        //Redirect to the sign page.
+        window.location = '/frontend/login.html'
+    })
 })
+
 const signUp =  async (user) => {
    //Ready up the new user.
     const response = await fetch('http://localhost:3000/signUp', {

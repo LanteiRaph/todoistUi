@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
     //Get the login button and add onclick listener
     const loginBtn = document.getElementById('login')
     loginBtn.addEventListener('click', () => {
-        alert('hello from login')
+        //Redirect to the sign page.
+        window.location = '/frontend/login.html'
     })
 });
