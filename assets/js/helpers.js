@@ -1,5 +1,5 @@
 //This file handle s all shared logic, each apps will have is own logic but supported by this file.
-function extractFormData(form) {
+function extractFormData(callback) {
   //Create a new user
   const user = {};
   const form = document.querySelector("form");
@@ -15,8 +15,9 @@ function extractFormData(form) {
     inputs.forEach((input) => {
       user[input.name] = input.value;
     });
+    //Use the callback method to pass the user back.
+    callback(user)
   });
-  return user
 }
 
 async function sendToServer(url, method, data){
