@@ -14,6 +14,10 @@ const login = async (user) => {
     "POST",
     user
   );
-  //Local Storeage....
+  //Check if user Valid mean we have a user other its 403...
+  if(!userLoggedin) return 
+  //Save the retrubed user as the current looged in user....
   localStorage.setItem('user', JSON.stringify(userLoggedin))
+  //Rediredt to the todos page.
+  window.location = '/frontend/todos.html'
 };
