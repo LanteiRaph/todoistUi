@@ -31,3 +31,27 @@ async function sendToServer(url, method, data){
     //Await the response
     return await response.json()
 }
+
+//Return the current looged in user. 
+const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem('user'));
+}
+
+//Create an element with it inner tack and an event if any.
+const customeCreateElement = (el, text, event = null, callback=null) => {
+  //Create the llement
+  const element = document.createElement(el)
+  console.log(typeof text)
+  if(typeof text === 'string'){
+    const p = document.createElement('p')
+    p.textContent = text
+    text = p
+  } 
+  //set the inner text
+  element.appendChild(text)
+  //Check if event has been provided if not dont if so...
+  if(event == null) return element
+  //add event lisener
+  element.addEventListener(event, callback)
+  return element
+}
