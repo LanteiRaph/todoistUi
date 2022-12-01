@@ -19,7 +19,7 @@ function extractFormData(callback) {
     callback(user)
   });
 }
-
+//Send the given cont to thr server and receive the response.
 async function sendToServer(url, method, data){
     const response = await fetch(url, {
         method:method,
@@ -36,12 +36,11 @@ async function sendToServer(url, method, data){
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem('user'));
 }
-
 //Create an element with it inner tack and an event if any.
 const customeCreateElement = (el, text, event = null, callback=null) => {
   //Create the llement
   const element = document.createElement(el)
-  console.log(typeof text)
+
   if(typeof text === 'string'){
     const p = document.createElement('p')
     p.textContent = text

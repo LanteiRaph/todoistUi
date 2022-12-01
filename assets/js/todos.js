@@ -24,17 +24,20 @@ const paint = (todos) => {
     for(let i =0; i < todos.length; i++){
         //Get the ith todo
         const todo = todos[i];
+        console.log(todo)
         //Create a list record for the todo.
         const span = customeCreateElement('span', todo.description)
         const list = customeCreateElement('li', span);
         //add the edit and delete button.
-        const editBtn = customeCreateElement('button', 'Completed', 'click', () =>{
+        const editBtn = customeCreateElement('button', 'Completed', 'click', async () =>{
             //Update the todo as completed
-
+            const updated = await sendToServer(`http://localhost:3000/updateTodo/${todo._id}`, 'PUT', {
+                completed:true
+            })
         })
-        const deleteBtn = customeCreateElement('button', 'Delete', 'click', ()=>{
+        const deleteBtn = customeCreateElement('button', 'Delete', 'click', async ()=>{
             //Delete the todo
-
+            const deleted = await sendToServer(`http://localhost:3000/deleteTodo/${todo._id}`, 'DELETE')
         })  
         //Append the li to the list
         list.appendChild(editBtn)
@@ -54,7 +57,6 @@ const saveNewTodo = async (newTodo) => {
         userId: _id
     } 
     const response = await sendToServer('http://localhost:3000/addTodo', 'POST', newTodo_)
-    console.table(response)
     //Refresh the list of todos.
 }
 // //Edits the current todos description 
